@@ -39,10 +39,6 @@ class User(ResourceMixin, Base):
 
     person = relationship(Person, primaryjoin=person_id == Person.id, lazy=True)
 
-    @property
-    def get_phone(self):
-        return self.phone
-
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 

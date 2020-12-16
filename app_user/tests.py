@@ -1,6 +1,4 @@
 import json
-from itertools import starmap
-
 import rootpath
 import unittest
 

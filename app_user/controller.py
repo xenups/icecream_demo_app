@@ -60,15 +60,15 @@ def create_user(db_session: Session, data):
     validate_data(user_serializer, data)
     is_object_exist_409(User, db_session, User.phone == data['phone'])
     person = data['person']
-    person_obj = get_or_create(Person, db_session, name=person['name'])
+    person_obj = get_or_create(Person, db_session, Person.name == person['name'])
     person_obj.name = person['name']
     person_obj.last_name = person['last_name']
     person_obj.email = person['email']
     db_session.add(person_obj)
-    user = get_or_create(User, db_session, phone=data['phone'])
+    user = get_or_create(User, db_session, User.phone == data['phone'])
     user.phone = data['phone']
     user.set_roles(data['roles'])
-    user.username = user.get_phone
+    user.username = user.phone
     user.set_password(data['password'])
     user.person = person_obj
     db_session.add(user)
@@ -126,7 +126,3 @@ def get_rules(db_session: Session):
     req_user_json = bottle.request.get_user()
     current_user = db_session.query(User).get(req_user_json['id'])
     return HTTPResponse(status=status.HTTP_200_OK, body=get_rules_json(current_user), message="rules")
-
-
-def get_roles():
-    return HTTPResponse(status=status.HTTP_200_OK, body=get_roles_json())

@@ -15,7 +15,6 @@ searches_index = [
 ]
 
 apps = [
-    'app_room.urls.RoomApp',
     'app_user.urls.USERApp'
 ]
 rules_file = os.getenv("rules_file")
@@ -37,6 +36,6 @@ database = {
     'db_name': os.getenv('db_name'),
     'db_type': os.getenv('db_type') or "sqlite"
 }
-project_secret = os.getenv('project_secret')
+project_secret = os.getenv('project_secret') or "project_secret"
 jwt_ttl = os.getenv('jwt_ttl') or 64000
 sentry_dsn = os.getenv('sentry_dsn')
