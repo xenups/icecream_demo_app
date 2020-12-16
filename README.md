@@ -1,6 +1,8 @@
 Room Rest App
 
-Simple rest app using ice-cream
+Simple rest app using [ICECREAM](https://github.com/xenups/ICECREAM "ICECREAM")
+
+
 ## Quickstart:
 
    	#install requirements:
