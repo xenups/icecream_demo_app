@@ -15,7 +15,8 @@ searches_index = [
 ]
 
 apps = [
-    'app_user.urls.USERApp'
+    'app_user.urls.USERApp',
+    'app_room.urls.RoomApp'
 ]
 rules_file = os.getenv("rules_file")
 roles_file = os.getenv("roles_file")
