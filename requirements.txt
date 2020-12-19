@@ -1,1 +1,1 @@
-icecreamy==0.0.5
+icecreamy==0.0.6.1
