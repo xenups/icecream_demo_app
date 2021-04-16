@@ -1,17 +1,17 @@
 "ICECREAM"
 import bottle
-from sqlalchemy.orm import Session
-
 from ICECREAM import status
 from ICECREAM.file_handler import upload
-from ICECREAM.paginator import Paginate
-from ICECREAM.util import str_to_bool
-from ICECREAM.validators import validate_data
-from app_user.messages import ACTIVATED_MSG, DEACTIVATED_MSG, DELETE_IMG, PASSWORD_CHANGED, OLD_PASSWORD_NOT_VALID
-from app_user.models import User, Person, PersonImage
-from ICECREAM.rbac import validate_permission, get_rules_json, get_roles_json
 from ICECREAM.http import HTTPError, HTTPResponse
 from ICECREAM.models.query import get_or_create, is_object_exist_409, get_object_or_404, set_objects_limit
+from ICECREAM.paginator import Paginate
+from ICECREAM.rbac import get_rules_json
+from ICECREAM.util import str_to_bool
+from ICECREAM.validators import validate_data
+from sqlalchemy.orm import Session
+
+from app_user.messages import ACTIVATED_MSG, DEACTIVATED_MSG, DELETE_IMG, PASSWORD_CHANGED, OLD_PASSWORD_NOT_VALID
+from app_user.models import User, Person, PersonImage
 from app_user.schemas import users_serializer, user_serializer, person_image_serializer, user_edit_serializer, \
     set_role_serializer, change_password_serializer
 

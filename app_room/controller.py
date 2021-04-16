@@ -12,9 +12,14 @@ from app_room.schemas import room_serializer, room_image_serializer, rooms_seria
 
 
 def get_rooms(db_session):
-    rooms = db_session.query(Room).all()
-    result = rooms_serializer.dump(rooms)
-    return HTTPResponse(status=status.HTTP_200_OK, body=result)
+    print(db_session)
+    print("hi")
+    # try:
+    #     rooms = db_session.query(Room).all()
+    #     result = rooms_serializer.dump(rooms)
+    # except Exception as e:
+    #     print(e)
+    # return HTTPResponse(status=status.HTTP_200_OK, body=result)
 
 
 def get_room(pk, db_session: Session):

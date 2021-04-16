@@ -1,18 +1,19 @@
 from distutils.util import strtobool
 
-from bottle import request
-from bottle_jwt2 import JWTProviderPlugin
-from sqlalchemy.orm import Session
 from ICECREAM.cache import RedisCache
 from ICECREAM.http import HTTPError
+from ICECREAM.models.query import get_object
 from ICECREAM.validators import validate_data
+from ICECREAM.wrappers import db_handler
+from bottle import request
+from bottle_jwt2 import JWTProviderPlugin
+from limiter import FixedWindowLimiter
+from sqlalchemy.orm import Session
+
 from app_user.messages import USER_IS_NOT_ACTIVE, AUTHENTICATION_ERROR, TOKEN_EXPIRED, IP_BANNED_ERROR
 from app_user.models import User
-from ICECREAM.models.query import get_object
-from ICECREAM.wrappers import db_handler
 from app_user.schemas import user_serializer, login_serializer
 from settings import project_secret, jwt_ttl, redis_cache
-from limiter import FixedWindowLimiter
 
 TEST_REDIS_CONFIG = {'host': 'redis', 'port': 6379,
                      'password': redis_cache['redis_pass'], 'db': 10}

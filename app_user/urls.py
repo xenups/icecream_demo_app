@@ -1,10 +1,10 @@
 "ICECREAM"
+from ICECREAM.baseapp import BaseApp
+from ICECREAM.wrappers import pass_data, debug
 from bottle_jwt2 import jwt_auth_required
 
-from ICECREAM.baseapp import BaseApp
 from app_user.controller import get_users, create_user, get_user, activate_user, edit_user, \
     add_person_image, get_rules, set_user_role, change_password, get_current_user, remove_person_image
-from ICECREAM.wrappers import pass_data, debug
 
 
 class USERApp(BaseApp):

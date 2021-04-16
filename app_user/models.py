@@ -1,12 +1,11 @@
 "ICECREAM"
 import datetime
 
-from sqlalchemy.orm import relationship
 from ICECREAM.db_initializer import Base
-from sqlalchemy import Column, String, ForeignKey, Boolean, Integer, DateTime
-from werkzeug.security import generate_password_hash, check_password_hash
-
 from ICECREAM.models.basemodels import ResourceMixin
+from sqlalchemy import Column, String, ForeignKey, Boolean, Integer, DateTime
+from sqlalchemy.orm import relationship
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class Person(Base):

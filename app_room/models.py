@@ -1,8 +1,7 @@
 "ICECREAM"
+from ICECREAM.db_initializer import Base
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
-
-from ICECREAM.db_initializer import Base
 
 
 class Room(Base):

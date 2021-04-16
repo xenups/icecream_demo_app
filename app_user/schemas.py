@@ -1,8 +1,9 @@
 "ICECREAM"
-from app_user.models import PersonImage
-from ICECREAM.util import get_media_link
 from ICECREAM.rbac import get_roles_list
+from ICECREAM.util import get_media_link
 from marshmallow import Schema, fields, validate, ValidationError
+
+from app_user.models import PersonImage
 
 
 class SuperPersonSchema(Schema):
