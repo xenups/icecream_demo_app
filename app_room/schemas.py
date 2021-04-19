@@ -1,8 +1,7 @@
 "ICECREAM"
+from app_room.models import Room, RoomImage
 from ICECREAM.util import get_media_link
 from marshmallow import Schema, fields
-
-from app_room.models import RoomImage, Room
 
 
 class RoomImageSchema(Schema):
@@ -16,7 +15,7 @@ class RoomImageSchema(Schema):
 
     class Meta:
         model = RoomImage
-        fields = ('id', 'name', 'room_id', 'files', 'image_path')
+        fields = ("id", "name", "room_id", "files", "image_path")
 
 
 class RoomSchema(Schema):
@@ -24,7 +23,7 @@ class RoomSchema(Schema):
 
     class Meta:
         model = Room
-        fields = ('id', 'name', 'room_images')
+        fields = ("id", "name", "room_images")
 
 
 room_serializer = RoomSchema()
