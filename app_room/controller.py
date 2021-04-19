@@ -37,10 +37,17 @@ def filter_rooms(db_session: Session):
     return HTTPResponse(status=200, body=result)
 
 
+def new_rooms(data, db_session: Session):
+    validate_data(data=data, serializer=room_serializer)
+    room = Room()
+    room.name = data["name"]
+    room.room_images = data["rooms"]
+
+
 def new_room(db_session, data):
     validate_data(data=data, serializer=room_serializer)
     room = Room()
-    room.name = data['name']
+    room.name = data["name"]
     db_session.add(room)
     db_session.commit()
     result = room_serializer.dump(db_session.query(Room).get(room.id))
@@ -51,7 +58,7 @@ def add_room_image(db_session, data):
     validate_data(data=data, serializer=room_image_serializer)
     room_image = RoomImage()
     room_image.name = upload(data=data)
-    room_image.room_id = data['room_id']
+    room_image.room_id = data["room_id"]
     db_session.add(room_image)
     db_session.commit()
     room_image = db_session.query(RoomImage).get(room_image.id)
