@@ -1,25 +1,20 @@
 "ICECREAM"
 from ICECREAM import status
+from ICECREAM.validators import validate_data
 from sqlalchemy.orm import Session
 from ICECREAM.http import HTTPResponse
 from ICECREAM.models.query import get_object_or_404
 from ICECREAM.paginator import Paginate
 from ICECREAM.file_handler import upload
 from app_room.models import Room, RoomImage
-from ICECREAM.validators import validate_data
 from ICECREAM.filters import MongoFilter, get_query_from_url
 from app_room.schemas import room_serializer, room_image_serializer, rooms_serializer
 
 
 def get_rooms(db_session):
-    print(db_session)
-    print("hi")
-    # try:
-    #     rooms = db_session.query(Room).all()
-    #     result = rooms_serializer.dump(rooms)
-    # except Exception as e:
-    #     print(e)
-    # return HTTPResponse(status=status.HTTP_200_OK, body=result)
+    rooms = db_session.query(Room).all()
+    result = rooms_serializer.dump(rooms)
+    return HTTPResponse(status=status.HTTP_200_OK, body=result)
 
 
 def get_room(pk, db_session: Session):
